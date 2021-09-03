@@ -1,18 +1,17 @@
 from django.shortcuts import render 
-from django.views.generic import TemplateView , ListView
+from django.views.generic import ListView , DetailView
 # import models
-# from .models import Snack
+from .models import Snack
 
 # Create your views here.
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-    # models = 'Snacks' # class model 
+# class HomePageView(TemplateView):
+#     template_name = 'home.html'
+#     models = Snack # class model 
 
-class AboutPageView(TemplateView):
-    template_name = 'about.html'
-    # models = 'Snacks'
+class SnackListView(ListView):
+    model = Snack
+    template_name = 'snack_list.html'
 
-
-# creating views using functions
-# def about(request):
-#     return render('', 'snacks/about.html')
+class DetailView(DetailView):
+    template_name = 'snack_detail.html'
+    model = Snack

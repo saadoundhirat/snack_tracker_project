@@ -17,11 +17,11 @@ Including another URLconf
 from django.urls import path
 
 # import the views
-from .views import HomePageView, AboutPageView
+from .views import DetailView,SnackListView
 
 # path is a function the django framework provides to help with url routing and takes a path and a view then use as_view to convert it to a view
 
 urlpatterns = [
-    path('/', HomePageView.as_view(), name='home'),
-    path('about/', AboutPageView.as_view(), name='about'),
+    path('', SnackListView.as_view(), name='snack_list'),   
+    path('<int:pk>/', DetailView.as_view(), name='snack_detail'),   
 ]

@@ -1,24 +1,15 @@
-from django.test import TestCase, SimpleTestCase
-
-# import django.urls 
+from django.test import TestCase
 from django.urls import reverse
-
 # Create your tests here.
-class TestingPages(SimpleTestCase): # enhirate django.test.SimpleTestCase
-    def test_home(self):
-        # arrange
-        url = reverse('home')
-        # assign the status code
+
+class SnackTests(TestCase):
+    def test_snack_list(self):
+        url = reverse('snack_list')
         response = self.client.get(url)
-        # assert
         self.assertEqual(response.status_code, 200)
 
-        
-    # test the home page if return status code 200 (means OK)
-    def test_home_status_code(self):
-        # arrange
-        url = reverse('home')
-        # assign the status code
+    def test_snack_list_template(self):
+        url = reverse('snack_list')
         response = self.client.get(url)
-        # assert
-        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'snack_list.html')
+        self.assertTemplateUsed(response, 'base.html')
